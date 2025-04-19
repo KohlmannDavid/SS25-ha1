@@ -103,5 +103,35 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("should display the last entered number when pressing equals without a binary operation")
+    void testEqualsWithoutBinaryOperation() {
+        Calculator calc = new Calculator();
+
+        // Pressing equals without a binary operation
+        calc.pressDigitKey(8);
+        calc.pressEqualsKey();
+
+        String expected = "8"; // Erwartet die Zahl "8"
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should not change the screen when pressing negative on zero")
+    void testNegativeOnZero() {
+        Calculator calc = new Calculator();
+
+        // Vorzeichenumkehr auf Null anwenden
+        calc.pressDigitKey(0);
+        calc.pressNegativeKey();
+
+        String expected = "0"; // Der Bildschirm sollte sich nicht ändern
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
 
